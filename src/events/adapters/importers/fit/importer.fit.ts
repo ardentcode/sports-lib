@@ -321,7 +321,9 @@ export class EventImporterFIT {
   private static getActivityFromSessionObject(sessionObject: any, fitDataObject: any): ActivityInterface {
     let startDate = sessionObject.start_time;
     const totalElapsedTime = sessionObject.total_elapsed_time || sessionObject.total_timer_time || 0;
-    let endDate = sessionObject.timestamp || new Date(sessionObject.start_time.getTime() + totalElapsedTime * 1000);
+
+    // let endDate = sessionObject.timestamp || new Date(sessionObject.start_time.getTime() + totalElapsedTime * 1000);
+    let endDate = new Date(sessionObject.start_time.getTime() + totalElapsedTime * 1000);
 
     // Some fit files have wrong dates for session.timestamp && session.start_time and those miss an elapsed time
     if (
@@ -339,9 +341,11 @@ export class EventImporterFIT {
       }
       startDate = fitDataObject.records[0].timestamp;
       endDate = fitDataObject.records[fitDataObject.records.length - 1].timestamp;
-    } else if (+endDate - +startDate > MAX_ACTIVITY_DURATION) {
-      endDate = new Date(sessionObject.start_time.getTime() + totalElapsedTime * 1000);
     }
+
+    // else if (+endDate - +startDate > MAX_ACTIVITY_DURATION) {
+    //   endDate = new Date(sessionObject.start_time.getTime() + totalElapsedTime * 1000);
+    // }
 
     // Create an activity
     const activity = new Activity(
