@@ -1,5 +1,5 @@
 import { Event } from '../../../event';
-import { Activity, MAX_ACTIVITY_DURATION } from '../../../../activities/activity';
+import { Activity } from '../../../../activities/activity';
 import { Lap } from '../../../../laps/lap';
 import { EventInterface } from '../../../event.interface';
 import { Creator } from '../../../../creators/creator';
@@ -71,6 +71,7 @@ import { DataStartEvent } from '../../../../data/data.start-event';
 import { DataStopEvent } from '../../../../data/data.stop-event';
 import { DataStopAllEvent } from '../../../../data/data.stop-all-event';
 import { ActivityUtilities } from '../../../utilities/activity.utilities';
+import { DataIntensity } from '../../../../data/data.intensity';
 
 const FitFileParser = require('fit-file-parser').default;
 
@@ -503,6 +504,10 @@ export class EventImporterFIT {
     // Description
     if (isNumberOrString(object.description)) {
       stats.push(new DataDescription(object.description));
+    }
+    // Intensity
+    if (isNumberOrString(object.intensity)) {
+      stats.push(new DataIntensity(object.intensity));
     }
 
     // @todo add support for more data
