@@ -1,5 +1,5 @@
 import { Event } from '../../../event';
-import { Activity, MAX_ACTIVITY_DURATION } from '../../../../activities/activity';
+import { Activity } from '../../../../activities/activity';
 import { Lap } from '../../../../laps/lap';
 import { EventInterface } from '../../../event.interface';
 import { Creator } from '../../../../creators/creator';
@@ -71,6 +71,7 @@ import { DataStartEvent } from '../../../../data/data.start-event';
 import { DataStopEvent } from '../../../../data/data.stop-event';
 import { DataStopAllEvent } from '../../../../data/data.stop-all-event';
 import { ActivityUtilities } from '../../../utilities/activity.utilities';
+import { DataIntensity } from '../../../../data/data.intensity';
 
 const FitFileParser = require('fit-file-parser').default;
 
@@ -352,7 +353,9 @@ export class EventImporterFIT {
       startDate,
       endDate,
       this.getActivityTypeFromSessionObject(sessionObject),
-      this.getCreatorFromFitDataObject(fitDataObject)
+      this.getCreatorFromFitDataObject(fitDataObject),
+      '',
+      fitDataObject.file_ids[0].manufacturer
     );
     // Set the activity stats
     this.getStatsFromObject(sessionObject, activity).forEach(stat => activity.addStat(stat));
@@ -504,6 +507,10 @@ export class EventImporterFIT {
     if (isNumberOrString(object.description)) {
       stats.push(new DataDescription(object.description));
     }
+    // Intensity
+    if (isNumberOrString(object.intensity)) {
+      stats.push(new DataIntensity(object.intensity));
+    }
 
     // @todo add support for more data
     return stats;
@@ -526,7 +533,9 @@ export class EventImporterFIT {
       }
       case 'garmin': {
         creator = new Creator(
-          ImporterFitGarminDeviceNames[fitDataObject.file_ids[0].product] ||
+          (Number.isInteger(fitDataObject.file_ids[0].product)
+            ? ImporterFitGarminDeviceNames[fitDataObject.file_ids[0].product]
+            : fitDataObject.file_ids[0].product) ||
             fitDataObject.file_ids[0].product_name ||
             'Garmin Unknown'
         );
