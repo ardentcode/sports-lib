@@ -353,7 +353,9 @@ export class EventImporterFIT {
       startDate,
       endDate,
       this.getActivityTypeFromSessionObject(sessionObject),
-      this.getCreatorFromFitDataObject(fitDataObject)
+      this.getCreatorFromFitDataObject(fitDataObject),
+      '',
+      fitDataObject.file_ids[0].manufacturer
     );
     // Set the activity stats
     this.getStatsFromObject(sessionObject, activity).forEach(stat => activity.addStat(stat));
@@ -531,7 +533,9 @@ export class EventImporterFIT {
       }
       case 'garmin': {
         creator = new Creator(
-          ImporterFitGarminDeviceNames[fitDataObject.file_ids[0].product] ||
+          (Number.isInteger(fitDataObject.file_ids[0].product)
+            ? ImporterFitGarminDeviceNames[fitDataObject.file_ids[0].product]
+            : fitDataObject.file_ids[0].product) ||
             fitDataObject.file_ids[0].product_name ||
             'Garmin Unknown'
         );

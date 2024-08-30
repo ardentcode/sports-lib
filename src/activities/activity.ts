@@ -40,6 +40,7 @@ export class Activity extends DurationClassAbstract implements ActivityInterface
   ];
 
   public name: string;
+  public manufacturer: string;
   public type: ActivityTypes;
   public creator: CreatorInterface;
   public intensityZones: IntensityZonesInterface[] = []; // maybe rename
@@ -49,7 +50,7 @@ export class Activity extends DurationClassAbstract implements ActivityInterface
 
   private events: DataEvent[] = [];
 
-  constructor(startDate: Date, endDate: Date, type: ActivityTypes, creator: Creator, name = '') {
+  constructor(startDate: Date, endDate: Date, type: ActivityTypes, creator: Creator, name = '', manufacturer = '') {
     super(startDate, endDate);
     if (!startDate || !endDate) {
       throw new Error('Start and end dates are required');
@@ -63,6 +64,7 @@ export class Activity extends DurationClassAbstract implements ActivityInterface
     this.type = type;
     this.creator = creator;
     this.name = name;
+    this.manufacturer = manufacturer;
   }
 
   createStream(type: string): StreamInterface {
