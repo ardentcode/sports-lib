@@ -5,6 +5,36 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@ardentcode/sports-lib@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@ardentcode/sports-lib@workspace:."
+  dependencies:
+    "@types/jest": ^26.0.10
+    "@types/node": ^14.6.1
+    "@types/xmldom": ^0.1.30
+    "@typescript-eslint/eslint-plugin": ^4.23.0
+    "@typescript-eslint/parser": ^4.23.0
+    eslint: ^7.26.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^3.4.0
+    fast-xml-parser: ^3.17.4
+    fit-file-parser: ^1.20.0
+    geolib: ^3.3.1
+    gpx-builder: ^3.6.0
+    husky: ^6.0.0
+    jest: ^26.4.2
+    kalmanjs: ^1.1.0
+    lowpassf: ^0.5.0
+    moving-median: ^1.0.0
+    prettier: ^2.3.0
+    pretty-quick: ^3.1.0
+    ts-jest: ^26.3.0
+    typedoc: ^0.18.0
+    typescript: ^4.2.4
+    xmldom: ^0.3.0
+  languageName: unknown
+  linkType: soft
+
 "@babel/code-frame@npm:7.12.11, @babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.10.4":
   version: 7.12.11
   resolution: "@babel/code-frame@npm:7.12.11"
@@ -731,36 +761,6 @@ __metadata:
   checksum: 8e331aa1412d905ecc8efd63550f58a6f77dcb510f878172004e53be63eb82650623618763001a918fc5e21257b86c45041e4e97c454ed6a2d187de084abbd11
   languageName: node
   linkType: hard
-
-"@sports-alliance/sports-lib@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@sports-alliance/sports-lib@workspace:."
-  dependencies:
-    "@types/jest": ^26.0.10
-    "@types/node": ^14.6.1
-    "@types/xmldom": ^0.1.30
-    "@typescript-eslint/eslint-plugin": ^4.23.0
-    "@typescript-eslint/parser": ^4.23.0
-    eslint: ^7.26.0
-    eslint-config-prettier: ^8.3.0
-    eslint-plugin-prettier: ^3.4.0
-    fast-xml-parser: ^3.17.4
-    fit-file-parser: ^1.9.2
-    geolib: ^3.3.1
-    gpx-builder: ^3.6.0
-    husky: ^6.0.0
-    jest: ^26.4.2
-    kalmanjs: ^1.1.0
-    lowpassf: ^0.5.0
-    moving-median: ^1.0.0
-    prettier: ^2.3.0
-    pretty-quick: ^3.1.0
-    ts-jest: ^26.3.0
-    typedoc: ^0.18.0
-    typescript: ^4.2.4
-    xmldom: ^0.3.0
-  languageName: unknown
-  linkType: soft
 
 "@types/babel__core@npm:^7.0.0, @types/babel__core@npm:^7.1.7":
   version: 7.1.9
@@ -2531,12 +2531,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fit-file-parser@npm:^1.9.2":
-  version: 1.9.2
-  resolution: "fit-file-parser@npm:1.9.2"
+"fit-file-parser@npm:^1.20.0":
+  version: 1.20.0
+  resolution: "fit-file-parser@npm:1.20.0"
   dependencies:
     buffer: ^5.1.0
-  checksum: 1ca11c4a048a3cd752444115e3d67eeebc845dfbc7282f197e1bd4af41d6fccd9ccbce7089c1c57308c43ef60979c01ff40bb0f20e74242970f7a67b8a64d2b7
+  checksum: 23c35b4072d4b3889ac41d4bbcdba1859dc2cb17c676a8fa77639c763022c9d7fbd0e60c0ffe0efb9ed3d0cb9128562969f353fc2784503e846c469b9701e87e
   languageName: node
   linkType: hard
 
