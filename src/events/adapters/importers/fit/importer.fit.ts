@@ -509,7 +509,7 @@ export class EventImporterFIT {
     }
     // Intensity
     if (isNumberOrString(object.intensity)) {
-      stats.push(new DataIntensity(object.intensity));
+      stats.push(new DataIntensity(String(object.intensity)));
     }
 
     // @todo add support for more data
